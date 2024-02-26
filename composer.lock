@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "352d25634282b52e67c76f8f57e288b7",
+    "content-hash": "7318a73a40e9d93a26ae295c85d49eaf",
     "packages": [
         {
             "name": "psr/simple-cache",
@@ -59,26 +59,27 @@
             "time": "2022-04-08T16:41:45+00:00"
         },
         {
-            "name": "stougeiro/stdw-contract-cache",
+            "name": "stougeiro/cache-contract",
             "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/stougeiro/stdw-contract-cache.git",
-                "reference": "f03c63f7a670b63f258df825255926e35371d0f5"
+                "url": "https://github.com/stougeiro/cache-contract.git",
+                "reference": "37bde0c945d3e4cea9d963820a5537db411a97b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stougeiro/stdw-contract-cache/zipball/f03c63f7a670b63f258df825255926e35371d0f5",
-                "reference": "f03c63f7a670b63f258df825255926e35371d0f5",
+                "url": "https://api.github.com/repos/stougeiro/cache-contract/zipball/37bde0c945d3e4cea9d963820a5537db411a97b2",
+                "reference": "37bde0c945d3e4cea9d963820a5537db411a97b2",
                 "shasum": ""
             },
             "require": {
+                "php": "^8.1",
                 "psr/simple-cache": "^3.0@dev"
             },
             "type": "package",
             "autoload": {
                 "psr-4": {
-                    "STDW\\Contract\\Cache\\": "src/"
+                    "STDW\\Cache\\Contract\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -87,15 +88,15 @@
             ],
             "authors": [
                 {
-                    "name": "S.Tougeiro",
+                    "name": "stougeiro",
                     "email": "sidneytougeiro@gmail.com"
                 }
             ],
             "support": {
-                "issues": "https://github.com/stougeiro/stdw-contract-cache/issues",
-                "source": "https://github.com/stougeiro/stdw-contract-cache/tree/v0.1.0"
+                "issues": "https://github.com/stougeiro/cache-contract/issues",
+                "source": "https://github.com/stougeiro/cache-contract/tree/v0.1.0"
             },
-            "time": "2024-02-16T22:53:00+00:00"
+            "time": "2024-02-26T20:58:05+00:00"
         }
     ],
     "packages-dev": [],
@@ -104,7 +105,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^8.1"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
