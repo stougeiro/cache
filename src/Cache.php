@@ -10,9 +10,7 @@
     {
         public function __construct(
             protected CacheHandlerInterface $handler)
-        {
-            $this->handler = $handler;
-        }
+        { }
 
 
         public function get(string $key, mixed $default = null): mixed
