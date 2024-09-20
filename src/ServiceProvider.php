@@ -9,7 +9,7 @@
     use STDW\Cache\Handler\NullHandler;
 
 
-    class CacheServiceProvider extends ServiceProviderAbstracted
+    class ServiceProvider extends ServiceProviderAbstracted
     {
         public function register(): void
         {
