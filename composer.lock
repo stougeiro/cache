@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7318a73a40e9d93a26ae295c85d49eaf",
+    "content-hash": "0f5bf8093799368cca4c4327ad49bfdf",
     "packages": [
         {
             "name": "psr/simple-cache",
@@ -97,6 +97,45 @@
                 "source": "https://github.com/stougeiro/cache-contract/tree/v0.1.0"
             },
             "time": "2024-02-26T20:58:05+00:00"
+        },
+        {
+            "name": "stougeiro/contract",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stougeiro/contract.git",
+                "reference": "7e926d778863191ba50ea3beff0ab3dd580ceb5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stougeiro/contract/zipball/7e926d778863191ba50ea3beff0ab3dd580ceb5a",
+                "reference": "7e926d778863191ba50ea3beff0ab3dd580ceb5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "STDW\\Contract\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "stougeiro",
+                    "email": "sidneytougeiro@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/stougeiro/contract/issues",
+                "source": "https://github.com/stougeiro/contract/tree/v0.1.0"
+            },
+            "time": "2024-09-18T17:16:46+00:00"
         }
     ],
     "packages-dev": [],
