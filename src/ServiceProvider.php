@@ -15,17 +15,11 @@
         {
             $this->app->singleton(CacheInterface::class, Cache::class);
             $this->app->singleton(CacheHandlerInterface::class, NullHandler::class);
-
-            $this->app::macro('cache', function() {
-                return $this->app->make(CacheInterface::class);
-            });
         }
 
         public function boot(): void
-        {
-        }
+        { }
 
         public function terminate(): void
-        {
-        }
+        { }
     }

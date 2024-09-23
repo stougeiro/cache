@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-    use STDW\Cache\Cache;
+    use STDW\Cache\Contract\CacheInterface;
 
 
     if ( ! function_exists('cache'))
     {
-        function cache(): Cache
+        function cache(): CacheInterface
         {
-            return app()->make(Cache::class);
+            return app()->make(CacheInterface::class);
         }
     }
