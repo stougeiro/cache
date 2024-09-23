@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e79ee1f10f64a7220318f6e3aa861ad",
+    "content-hash": "c0d5ececb7a2f3cb311c2fc49aa8b08c",
     "packages": [
         {
             "name": "psr/simple-cache",
@@ -100,16 +100,16 @@
         },
         {
             "name": "stougeiro/contract",
-            "version": "v0.2.0",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stougeiro/contract.git",
-                "reference": "08adbecda64246fceaa0b5dc80c76d74115dc9c7"
+                "reference": "dc6be0cf3e66b31a2444717ff9b2ac3dbd714489"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stougeiro/contract/zipball/08adbecda64246fceaa0b5dc80c76d74115dc9c7",
-                "reference": "08adbecda64246fceaa0b5dc80c76d74115dc9c7",
+                "url": "https://api.github.com/repos/stougeiro/contract/zipball/dc6be0cf3e66b31a2444717ff9b2ac3dbd714489",
+                "reference": "dc6be0cf3e66b31a2444717ff9b2ac3dbd714489",
                 "shasum": ""
             },
             "require": {
@@ -136,9 +136,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stougeiro/contract/issues",
-                "source": "https://github.com/stougeiro/contract/tree/v0.2.0"
+                "source": "https://github.com/stougeiro/contract/tree/v0.3.0"
             },
-            "time": "2024-09-23T04:34:00+00:00"
+            "time": "2024-09-23T06:04:39+00:00"
         }
     ],
     "packages-dev": [],
