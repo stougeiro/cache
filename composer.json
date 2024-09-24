@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^8.1",
-        "stougeiro/contract": "0.4.2",
+        "stougeiro/contract": "0.5.0",
         "stougeiro/cache-contract": "0.1.0"
     }
 }
