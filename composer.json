@@ -29,7 +29,8 @@
         }
     },
     "require": {
-        "php": ">=8.2"
+        "php": ">=8.2",
+        "stougeiro/cache-contract": "^1.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.2"
