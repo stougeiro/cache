@@ -18,7 +18,7 @@
          * @param array{
          *    handler?: string,
          *    storage?: string,
-         * } $config 
+         * } $config
          */
         public function __construct(array $config)
         {
@@ -34,14 +34,14 @@
         }
 
 
-        /** @return string 
+        /** @return string
          */
         public function handler(): string
         {
             return $this->handler;
         }
 
-        /** @return string 
+        /** @return string
          */
         public function storage(): string
         {
@@ -50,8 +50,8 @@
 
 
         /**
-         * @param string $handler 
-         * @return string 
+         * @param string $handler
+         * @return string
          */
         protected function validateHandler(string $handler): string
         {
@@ -63,8 +63,8 @@
         }
 
         /**
-         * @param string $path 
-         * @return string 
+         * @param string $path
+         * @return string
          */
         protected function validateStorage(string $path): string
         {
@@ -75,7 +75,7 @@
             return $this->getDefaultSavePath();
         }
 
-        /** @return string 
+        /** @return string
          */
         protected function getDefaultSavePath(): string
         {

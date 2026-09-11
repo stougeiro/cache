@@ -5,11 +5,11 @@
 
     interface CacheConfigInterface
     {
-        /** @return string 
+        /** @return string
          */
         public function handler(): string;
 
-        /** @return string 
+        /** @return string
          */
         public function storage(): string;
     }
