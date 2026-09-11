@@ -2,8 +2,10 @@
 
     namespace STDW\Cache;
 
+    use STDW\Cache\Spec\CacheConfigInterface;
 
-    class CacheConfig
+
+    class CacheConfig implements CacheConfigInterface
     {
         /** @var string
          */
