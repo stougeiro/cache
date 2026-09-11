@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-    namespace STDW\Cache;
+    namespace STDW\Cache\Handler;
 
-    use STDW\Contract\Cache\CacheInterface;
+    use STDW\Cache\Spec\CacheConfigInterface;
     use STDW\Cache\Spec\CacheHandlerInterface;
 
 
-    class Cache implements CacheInterface
+    class FileCacheHandler implements CacheHandlerInterface
     {
         public function __construct(
-            protected CacheHandlerInterface $handler)
+            protected CacheConfigInterface $config)
         { }
 
 
@@ -19,7 +19,7 @@
          */
         public function has(string $key): bool
         {
-            return $this->handler->has($key);
+            return false;
         }
 
         /**
@@ -29,7 +29,7 @@
          */
         public function get(string $key, mixed $default = null): mixed
         {
-            return $this->handler->get($key, $default);
+            return '';
         }
 
         /**
@@ -40,7 +40,7 @@
          */
         public function set(string $key, mixed $value, int $ttl = 300): bool
         {
-            return $this->handler->set($key, $value, $ttl);
+            return false;
         }
 
         /**
@@ -49,13 +49,13 @@
          */
         public function delete(string $key): bool
         {
-            return $this->handler->delete($key);
+            return false;
         }
 
         /** @return bool 
          */
         public function clear(): bool
         {
-            return $this->handler->clear();
+            return false;
         }
     }
