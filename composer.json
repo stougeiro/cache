@@ -1,0 +1,37 @@
+{
+    "name": "stougeiro/cache",
+    "description": "",
+    "type": "library",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "stougeiro",
+            "email": "sidneytougeiro@gmail.com"
+        }
+    ],
+    "keywords": [
+    ],
+    "support": {
+        "issues": "https://github.com/stougeiro/cache/issues",
+        "source": "https://github.com/stougeiro/cache"
+    },
+    "funding": [
+        {
+            "type": "buymeacoffee",
+            "url": "https://www.buymeacoffee.com/stougeiro"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "STDW\\Cache\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.2"
+    }
+}
