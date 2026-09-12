@@ -1,9 +1,11 @@
-![phpstan-level](https://img.shields.io/badge/PHPStan-Level%209-brightgreen)
-![pest-php](https://img.shields.io/badge/Tests-%20Passed-brightgreen)
+![PHP](https://img.shields.io/badge/PHP-%20^8.2-777BB4)
+![PHPStan-Level](https://img.shields.io/badge/PHPStan-Level%209-224488)
+![Pest-php](https://img.shields.io/badge/Tests-Passed-019733)
+![License](https://img.shields.io/badge/License-MIT-777)
 
 # Cache
 
-[todo]
+A small, swappable cache implementation for PHP applications. It provides a single cache API with file-based and SQLite-backed storage handlers.
 
 ## ✨ Features
 
