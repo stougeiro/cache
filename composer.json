@@ -1,6 +1,6 @@
 {
     "name": "stougeiro/cache",
-    "description": "",
+    "description": "Performant cache implementation package providing file-based and SQLite-backed handlers for the stougeiro/cache-contract interfaces. Features optimized I/O with line-based serialization, WAL-mode SQLite, and modular design for PHP applications.",
     "type": "library",
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -12,6 +12,17 @@
         }
     ],
     "keywords": [
+        "cache",
+        "file-cache",
+        "sqlite-cache",
+        "cache-handler",
+        "cache-storage",
+        "cache-contract",
+        "php-cache",
+        "caching",
+        "performance",
+        "lightweight",
+        "modular"
     ],
     "support": {
         "issues": "https://github.com/stougeiro/cache/issues",
