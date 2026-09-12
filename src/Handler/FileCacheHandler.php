@@ -8,6 +8,7 @@
     use RecursiveIteratorIterator;
     use RecursiveDirectoryIterator;
     use FilesystemIterator;
+    use SplFileInfo;
 
 
     class FileCacheHandler implements CacheHandlerInterface
@@ -115,6 +116,8 @@
                 RecursiveIteratorIterator::CHILD_FIRST
             );
 
+            /** @var SplFileInfo $file
+             */
             foreach ($iterator as $file) {
                 if ($file->isDir()) {
                     rmdir($file->getRealPath());
