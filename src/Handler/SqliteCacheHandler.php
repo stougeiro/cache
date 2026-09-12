@@ -15,7 +15,14 @@
          */
         protected PDO $pdo;
 
-        /** @var array<string, PDOStatement>
+        /**
+         * @var array{
+         *   has: PDOStatement,
+         *   get: PDOStatement,
+         *   set: PDOStatement,
+         *   delete: PDOStatement,
+         *   clear: PDOStatement
+         * }
          */
         protected array $statement;
 
