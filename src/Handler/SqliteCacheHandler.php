@@ -5,6 +5,7 @@
     use STDW\Cache\Spec\CacheHandlerInterface;
 
     use PDO;
+    use PDOStatement;
     use Throwable;
 
 
@@ -14,9 +15,9 @@
          */
         protected PDO $pdo;
 
-        /** @var object
+        /** @var array<string, PDOStatement>
          */
-        protected object $statement;
+        protected array $statement;
 
 
         public function __construct(
@@ -37,13 +38,16 @@
          */
         public function has(string $key): bool
         {
-            $this->statement->has->execute([$key]);
+            $this->statement['has']->execute([$key]);
 
-            $expiresAt = $this->statement->has->fetchColumn();
+            $expiresAt = $this->statement['has']->fetchColumn();
 
             if ($expiresAt === false) {
                 return false;
             }
+
+            /** @var string $expiresAt
+             */
 
             if ((int) $expiresAt < time()) {
                 $this->delete($key);
@@ -61,13 +65,16 @@
          */
         public function get(string $key, mixed $default = null): mixed
         {
-            $this->statement->get->execute([$key]);
+            $this->statement['get']->execute([$key]);
 
-            $row = $this->statement->get->fetch(PDO::FETCH_ASSOC);
+            $row = $this->statement['get']->fetch(PDO::FETCH_ASSOC);
 
-            if ($row === false) {
+            if ( ! is_array($row)) {
                 return $default;
             }
+
+            /** @var array{value: string, expires_at: string} $row
+             */
 
             if ((int) $row['expires_at'] < time()) {
                 $this->delete($key);
@@ -92,7 +99,7 @@
          */
         public function set(string $key, mixed $value, int $ttl = 300): bool
         {
-            return $this->statement->set->execute([
+            return $this->statement['set']->execute([
                 $key, serialize($value), time() + $ttl,
             ]);
         }
@@ -103,7 +110,7 @@
          */
         public function delete(string $key): bool
         {
-            return $this->statement->delete->execute([$key]);
+            return $this->statement['delete']->execute([$key]);
 
         }
 
@@ -111,7 +118,7 @@
          */
         public function clear(): bool
         {
-            return $this->statement->clear->execute();
+            return $this->statement['clear']->execute();
         }
 
 
@@ -151,7 +158,7 @@
          */
         protected function prepareStatements(): void
         {
-            $this->statement = (object) [
+            $this->statement = [
                 'has' => $this->pdo->prepare(
                     'SELECT expires_at FROM cache WHERE key = :key'
                 ),
