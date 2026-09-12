@@ -69,8 +69,8 @@
 
 
         /**
-         * @param CacheConfigInterface $config 
-         * @return CacheHandlerInterface 
+         * @param CacheConfigInterface $config
+         * @return CacheHandlerInterface
          */
         protected function createHandler(CacheConfigInterface $config): CacheHandlerInterface
         {
