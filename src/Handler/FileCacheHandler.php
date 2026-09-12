@@ -25,12 +25,12 @@
         public function has(string $key): bool
         {
             $path = $this->getPath($key);
-            $handle = fopen($path, 'r');
 
-            if ($handle === false) {
+            if ( ! is_file($path)) {
                 return false;
             }
 
+            $handle = fopen($path, 'r');
             $line = fgets($handle);
             fclose($handle);
 
@@ -51,12 +51,12 @@
         public function get(string $key, mixed $default = null): mixed
         {
             $path = $this->getPath($key);
-            $handle = fopen($path, 'r');
 
-            if ($handle === false) {
+            if ( ! is_file($path)) {
                 return $default;
             }
 
+            $handle = fopen($path, 'r');
             $line = fgets($handle);
 
             if ($line === false || ((int) $line) < time()) {
