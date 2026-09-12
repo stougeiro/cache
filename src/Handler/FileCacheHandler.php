@@ -24,7 +24,7 @@
          */
         public function has(string $key): bool
         {
-            $path = $this->path($key);
+            $path = $this->getPath($key);
             $handle = fopen($path, 'r');
 
             if ($handle === false) {
@@ -50,7 +50,7 @@
          */
         public function get(string $key, mixed $default = null): mixed
         {
-            $path = $this->path($key);
+            $path = $this->getPath($key);
             $handle = fopen($path, 'r');
 
             if ($handle === false) {
@@ -86,7 +86,7 @@
          */
         public function set(string $key, mixed $value, int $ttl = 300): bool
         {
-            $path = $this->path($key, true);
+            $path = $this->setPath($key);
             $content = (time() + $ttl) ."\n". serialize($value);
 
             return file_put_contents($path, $content, LOCK_EX) !== false;
@@ -98,7 +98,7 @@
          */
         public function delete(string $key): bool
         {
-            $path = $this->path($key);
+            $path = $this->getPath($key);
 
             if (is_file($path)) {
                 return unlink($path);
@@ -137,15 +137,27 @@
          * @param string $key
          * @return string
          */
-        protected function path(string $key, bool $ensureDirectory = false): string
+        protected function getPath(string $key): string
         {
             $hash = md5($key);
             $dir = $this->storage . DIRECTORY_SEPARATOR . substr($hash, 0, 2) . DIRECTORY_SEPARATOR;
 
-            if ($ensureDirectory && ! is_dir($dir)) {
-                mkdir($dir, 0755, true);
+            return $dir . $hash.'.cache';
+        }
+
+        /**
+         * @param string $key
+         * @return string
+         */
+        protected function setPath(string $key): string
+        {
+            $path = $this->getPath($key);
+            $dir = dirname($path);
+
+            if ( ! is_dir($dir)) {
+                mkdir($dir, 755, true);
             }
 
-            return $dir . $hash.'.cache';
+            return $path;
         }
     }
