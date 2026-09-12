@@ -2,14 +2,13 @@
 
     namespace STDW\Cache\Handler;
 
-    use STDW\Cache\Spec\CacheConfigInterface;
     use STDW\Cache\Spec\CacheHandlerInterface;
 
 
     class SqliteCacheHandler implements CacheHandlerInterface
     {
         public function __construct(
-            protected CacheConfigInterface $config)
+            protected string $storage)
         { }
 
 
