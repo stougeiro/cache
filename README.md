@@ -1,4 +1,5 @@
 ![phpstan-level](https://img.shields.io/badge/PHPStan-Level%209-brightgreen)
+![pest-php](https://img.shields.io/badge/Tests-%20Passed-brightgreen)
 
 # Cache
 
@@ -23,7 +24,7 @@ composer require stougeiro/cache
 
 ## 🧠 Why?
 
-[todo]
+Because cache libraries should be fast, simple, and extensible without being over-engineered. This package provides two production-ready handlers with different tradeoffs — file-based for simplicity, SQLite for concurrency — behind a single interface that can be swapped without changing application code.
 
 ---
 
