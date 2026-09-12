@@ -31,6 +31,11 @@
             }
 
             $handle = fopen($path, 'r');
+
+            if ($handle === false) {
+                return false;
+            }
+
             $line = fgets($handle);
             fclose($handle);
 
@@ -57,6 +62,11 @@
             }
 
             $handle = fopen($path, 'r');
+
+            if ($handle === false) {
+                return $default;
+            }
+
             $line = fgets($handle);
 
             if ($line === false || ((int) $line) < time()) {
