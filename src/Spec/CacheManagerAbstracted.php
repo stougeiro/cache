@@ -3,8 +3,6 @@
     namespace STDW\Cache\Spec;
 
     use STDW\Contract\Cache\CacheInterface;
-    use STDW\Cache\Spec\CacheConfigInterface;
-    use STDW\Cache\Spec\CacheHandlerInterface;
 
 
     abstract class CacheManagerAbstracted implements CacheInterface
