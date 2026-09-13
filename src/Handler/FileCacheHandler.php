@@ -165,7 +165,7 @@
             $dir = dirname($path);
 
             if ( ! is_dir($dir)) {
-                mkdir($dir, 755, true);
+                mkdir($dir, 0755, true);
             }
 
             return $path;
