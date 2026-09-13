@@ -9,9 +9,6 @@ A small, extensible cache library for PHP that abstracts storage behind a unifie
 
 ## ✨ Features
 
-- **[todo]**  
-  [todo]
-
 - **Unified API**  
   A single CacheInterface powering all handlers, keeping your application fully decoupled from the underlying storage engine.
 
