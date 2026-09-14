@@ -6,7 +6,6 @@
 
     use PDO;
     use PDOStatement;
-    use Throwable;
 
 
     class SqliteCacheHandler implements CacheHandlerInterface
@@ -89,13 +88,15 @@
                 return $default;
             }
 
-            try {
-                return unserialize($row['value']);
-            } catch (Throwable) {
+            $data = json_decode($row['value']);
+
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
                 $this->delete($key);
+
+                return $default;
             }
 
-            return $default;
+            return $data;
         }
 
         /**
@@ -107,7 +108,7 @@
         public function set(string $key, mixed $value, int $ttl = 300): bool
         {
             return $this->statement['set']->execute([
-                $key, serialize($value), time() + $ttl,
+                $key, json_encode($value), time() + $ttl,
             ]);
         }
 

@@ -4,7 +4,6 @@
 
     use STDW\Cache\Spec\CacheHandlerInterface;
 
-    use Throwable;
     use RecursiveIteratorIterator;
     use RecursiveDirectoryIterator;
     use FilesystemIterator;
@@ -79,13 +78,15 @@
             $data = stream_get_contents($handle);
             fclose($handle);
 
-            try {
-                return unserialize($data);
-            } catch (Throwable) {
+            $data = json_decode($data);
+
+            if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
                 unlink($path);
+
+                return $default;
             }
 
-            return $default;
+            return $data;
         }
 
         /**
@@ -97,7 +98,7 @@
         public function set(string $key, mixed $value, int $ttl = 300): bool
         {
             $path = $this->setPath($key);
-            $content = (time() + $ttl) ."\n". serialize($value);
+            $content = (time() + $ttl) ."\n". json_encode($value);
 
             return file_put_contents($path, $content, LOCK_EX) !== false;
         }

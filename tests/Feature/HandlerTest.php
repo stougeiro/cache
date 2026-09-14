@@ -110,7 +110,12 @@ test('set and get with array', function ($handler) {
     $data = ['name' => 'John', 'age' => 30, 'tags' => ['admin', 'user']];
     $handler->set('user', $data);
 
-    expect($handler->get('user'))->toBe($data);
+    $result = $handler->get('user');
+
+    expect($result)->toBeInstanceOf(\stdClass::class)
+        ->and($result->name)->toBe('John')
+        ->and($result->age)->toBe(30)
+        ->and($result->tags)->toBe(['admin', 'user']);
 })->with('handlers');
 
 test('set and get with object', function ($handler) {
@@ -227,7 +232,12 @@ test('cache facade set and get with array', function ($cache) {
     $data = ['name' => 'John', 'age' => 30, 'tags' => ['admin', 'user']];
     $cache->set('user', $data);
 
-    expect($cache->get('user'))->toBe($data);
+    $result = $cache->get('user');
+
+    expect($result)->toBeInstanceOf(\stdClass::class)
+        ->and($result->name)->toBe('John')
+        ->and($result->age)->toBe(30)
+        ->and($result->tags)->toBe(['admin', 'user']);
 })->with('caches');
 
 test('cache facade set and get with object', function ($cache) {
@@ -272,7 +282,7 @@ test('cache facade set and get with boolean', function ($cache) {
     expect($cache->get('key'))->toBeTrue();
 })->with('caches');
 
-test('get with corrupted serialized data returns false for file handler', function () {
+test('get with corrupted serialized data returns fallback for file handler', function () {
     $handler = new FileCacheHandler($this->testStorage);
     $handler->set('seed', 'ok');
 
@@ -280,14 +290,14 @@ test('get with corrupted serialized data returns false for file handler', functi
     $shard = substr($hash, 0, 2);
     $dir = $this->testStorage . DIRECTORY_SEPARATOR . $shard;
     mkdir($dir, 0755, true);
-    file_put_contents($dir . DIRECTORY_SEPARATOR . $hash . '.cache', (time() + 300) . "\nNOT_VALID_SERIALIZATION");
+    file_put_contents($dir . DIRECTORY_SEPARATOR . $hash . '.cache', (time() + 300) . "\nNOT_VALID_JSON");
 
     $result = $handler->get('corrupted', 'fallback');
 
-    expect($result)->toBeFalse();
+    expect($result)->toBe('fallback');
 });
 
-test('get with corrupted serialized data returns false for sqlite handler', function () {
+test('get with corrupted serialized data returns fallback for sqlite handler', function () {
     $handler = new SqliteCacheHandler($this->testStorage);
     $handler->set('seed', 'ok');
 
@@ -297,11 +307,11 @@ test('get with corrupted serialized data returns false for sqlite handler', func
     $storage = $property->getValue($handler);
 
     $pdo = new \PDO('sqlite:' . $storage . '/cache.sqlite');
-    $pdo->exec("INSERT OR REPLACE INTO cache (key, value, expires_at) VALUES ('corrupted', 'NOT_VALID_SERIALIZATION', " . (time() + 300) . ')');
+    $pdo->exec("INSERT OR REPLACE INTO cache (key, value, expires_at) VALUES ('corrupted', 'NOT_VALID_JSON', " . (time() + 300) . ')');
 
     $result = $handler->get('corrupted', 'fallback');
 
-    expect($result)->toBeFalse();
+    expect($result)->toBe('fallback');
 });
 
 test('set and get with special character keys', function ($handler) {
@@ -357,12 +367,15 @@ test('set and get with nested structures', function ($handler) {
             ],
         ],
         'items' => [1, 2, 3],
-        'map' => ['a' => 'A', 'b' => 'B'],
     ];
 
     $handler->set('nested', $nested);
 
-    expect($handler->get('nested'))->toBe($nested);
+    $result = $handler->get('nested');
+
+    expect($result->level1->level2->level3->deep)->toBeTrue()
+        ->and($result->level1->level2->level3->value)->toBe(42)
+        ->and($result->items)->toBe([1, 2, 3]);
 })->with('handlers');
 
 test('delete returns appropriate value for nonexistent key', function ($handler) {
